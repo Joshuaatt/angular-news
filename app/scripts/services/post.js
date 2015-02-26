@@ -2,7 +2,7 @@
 
 app.factory('Post', function($firebase, FIREBASE_URL) {
   var ref = new Firebase(FIREBASE_URL);
-  var posts = $firebase(ref.child('posts')).$asArray();
+  var posts = $firebase(ref.child('posts')).$asArray(); //opens a realtime connection to firebase.
 
   var Post = {
     all: posts,

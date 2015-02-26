@@ -21,7 +21,7 @@ var app = angular
     'ngTouch',
     'firebase'
   ])
-  .constant('FIREBASE_URL', 'https://vivid-torch-4847.firebaseio.com/posts/')
+  .constant('FIREBASE_URL', 'https://vivid-torch-4847.firebaseio.com/')
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
