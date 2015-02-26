@@ -34,9 +34,16 @@ app.factory('Auth', function ($firebase, $firebaseSimpleLogin, FIREBASE_URL, $ro
   $rootScope.$on('$firebaseSimpleLogin:login', function(e, user) {
     console.log('logged in');
     angular.copy(user, Auth.user);
+    Auth.user.profile = $firebase(ref.child('profile').child(Auth.user.uid)).$asObject();
+
+    console.log(Auth.user);
   });
   $rootScope.$on('$firebaseSimpleLogin:logout', function() {
     console.log('logged out');
+
+    if (Auth.user && Auth.user.profile) {
+      Auth.user.profile.$destroy();
+    }
     angular.copy({}, Auth.user);
   });
 
